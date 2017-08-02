@@ -1,10 +1,7 @@
-import os, string
+import os, string, sys, traceback,json, operator
 import regex as re
-import sys
-import traceback
-import json
 from pprint import pprint
-import operator
+
 def main():
 	if len(sys.argv) != 3:
 		print "Usage: python parse_genecards.py inputfile root_output_dir"
@@ -13,15 +10,6 @@ def main():
 		try:
 			with open(sys.argv[1],"r") as infile:
 				data = json.load(infile)
-
-			# with open("gene-expansion/ALL.json", "r") as infile:
-			# 	data2=json.load(infile)
-
-			# data2["GeneData"]["BRAF"]=data["GeneData"]["BRAF"]
-
-			# with open("ALL.json","w") as outfile:
-			# 	json.dump(data2,outfile)
-			# exit()
 
 			stopword=reads_stop_word()
 			stopword=domain_stop_word(stopword)			
